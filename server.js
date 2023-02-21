@@ -4,11 +4,21 @@ const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
 
-const url = "mongodb+srv://arbam486:93Whelper486@whelper.r0x6ync.mongodb.net/?retryWrites=true&w=majority";
+const { User } = require('./models/WriteListSchema.js');
+
 
 app.use(express.json());
 var cors = require('cors');
+const bodyParser = require('body-parser');
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'Whelper/build')))
+
+// application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: true}));
+
+// application/json
+app.use(bodyParser.json());
 
 mongoose.set("strictQuery", false);
 mongoose
@@ -17,16 +27,27 @@ mongoose
   .catch(err => console.log(err));
 
 app.listen(8080, () => {
-  console.log("Express server started");
+  console.log("Express server started 8080");
 });
 
-// bulid 
-
-app.use(express.static(path.join(__dirname, 'Whelper/build')))
+// get and post
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'Whelper/build/index.html'));
 })
+
+app.post('/', (res, req) => {
+
+  const test = new User(req.body);
+
+  test.save((err, doc) => {
+    if(err) return res.json({success: false, err});
+    return res.status(200).json({
+      success: true 
+    })
+  });
+
+});
 
 // bulid 
 
