@@ -1,66 +1,79 @@
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '/process.env') });
+
 const express = require('express');
 const mongoose = require('mongoose');
-
-const path = require('path');
 const app = express();
 
-const { User } = require('./models/WriteListSchema.js');
-
+// const { WriteListData } = require('./models/WriteListSchema');
 
 app.use(express.json());
+
 var cors = require('cors');
-const bodyParser = require('body-parser');
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'Whelper/build')))
-
-// application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({extended: true}));
-
-// application/json
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-mongoose.set("strictQuery", false);
-mongoose
-  .connect(url)
-  .then(res => console.log('mongo db connect'))
-  .catch(err => console.log(err));
-
-app.listen(8080, () => {
-  console.log("Express server started 8080");
-});
-
-// get and post
+app.use(express.static(path.join(__dirname, 'Whelper/build')));
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'Whelper/build/index.html'));
-})
-
-app.post('/', (res, req) => {
-
-  const test = new User(req.body);
-
-  test.save((err, doc) => {
-    if(err) return res.json({success: false, err});
-    return res.status(200).json({
-      success: true 
-    })
-  });
-
 });
 
-// bulid 
+mongoose.set("strictQuery", false);
+mongoose
+  .connect(process.env.DATABASE_URL)
+  .then(res => console.log('mongo db connect'))
+  .catch(err => console.log(err));
+
+const modelWriteList = new mongoose.Schema({
+  title: String,
+  subTitle: String,
+  content: String,
+});
+
+const modelMemoList = new mongoose.Schema({
+  memo: String,
+});
+
+const WriteListData = mongoose.model('WriteList', modelWriteList);
+const memoListData = mongoose.model('MemoList', modelMemoList);
 
 /*
 
-app.get('/components/Memo', function (req, res) {
-  res.json();
-})
+app.use(async ctx => {
+  ctx.body = ctx.request.body;
+});
 
 */
 
-// checking for router... but working it is not...
+app.get('/api/Write', (req, res) => {
+  WriteListData.find({}, (err, docs) => {
+    if (err) {
+      console.error(err);
+    } else {
+        res.json(docs);
+    }
+  });
+})
+
+app.get('/api/Memo', (req, res) => {
+  memoListData.find({}, (err, docs) => {
+    if (err) {
+      console.error(err);
+    } else {
+        res.json(docs);
+    }
+  });
+})
+
+app.listen(3000, () => {
+  console.log("Express server started 3000")
+});
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'Whelper/build/index.html'));
-})
+});
+
