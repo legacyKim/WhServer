@@ -41,20 +41,12 @@ const modelMemoList = new mongoose.Schema({
 const WriteListData = mongoose.model('WriteList', modelWriteList);
 const memoListData = mongoose.model('MemoList', modelMemoList);
 
-/*
-
-app.use(async ctx => {
-  ctx.body = ctx.request.body;
-});
-
-*/
-
 app.get('/api/Write', (req, res) => {
   WriteListData.find({}, (err, docs) => {
     if (err) {
       console.error(err);
     } else {
-        res.json(docs);
+      res.json(docs);
     }
   });
 })
@@ -64,7 +56,7 @@ app.get('/api/Memo', (req, res) => {
     if (err) {
       console.error(err);
     } else {
-        res.json(docs);
+      res.json(docs);
     }
   });
 })
@@ -76,4 +68,3 @@ app.listen(3000, () => {
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'Whelper/build/index.html'));
 });
-
