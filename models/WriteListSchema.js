@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const modelWriteList = new mongoose.Schema({
-  id: Number,
-  이름: String,
-  나이: Number
+  title: String,
+  subTitle: String,
+  content: String,
 });
 
-const WriteListData = mongoose.model('WriteList', modelWriteList);
+const WriteListSchema = mongoose.model('WriteList', modelWriteList);
 
-module.exports = WriteListData;
+module.exports = WriteListSchema;
