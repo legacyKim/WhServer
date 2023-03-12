@@ -14,8 +14,41 @@ app.get('/api/WriteList', (req, res) => {
     });
 });
 
+app.post('/api/WriteList', (req, res) => {
+
+    console.log(req.body.writeDate);
+
+    try {
+        const { title, subTitle, content } = req.body;
+
+        const writelist = new WriteListSchema({ title, subTitle, content });
+        writelist.save();
+    
+        res.status(201).json(writelist);
+      } catch (err) {
+        console.error(err);
+        res.status(500).send('Server error');
+      }
+})
+
+app.delete('/api/WriteList', (req, res) => {
+
+    WriteListSchema.deleteOne({ title: req.body.title }, (err, result) => {
+        if (err) {
+            console.error(err);
+            res.status(500).send('Server error');
+        } else {
+            res.status(200).send('Success');
+        }
+    });
+});
+
 app.get('/api/Memo', (req, res) => {
+
     MemoListSchema.find({}, (err, docs) => {
+
+        console.log(docs.memoDate)
+        console.log(docs)
         if (err) {
             console.error(err);
         } else {
