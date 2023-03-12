@@ -1,0 +1,663 @@
+.common_page {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 100%;
+}
+
+/* begin :: side */
+
+.menu {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    z-index: 99;
+}
+
+.Nav {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    height: 100%;
+}
+
+.Nav>li {
+    position: relative;
+    display: block;
+    text-align: right;
+}
+
+.Nav>li>a {
+    position: relative;
+    display: inline-block;
+
+    text-align: left;
+
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 8px;
+    color: #fff;
+
+    width: 100px;
+}
+
+.menu_close {
+    position: absolute;
+    top: 66px;
+    right: 0;
+    display: block;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid #fff;
+    background: #333;
+}
+
+/* end :: side */
+
+/* begin :: Memo */
+
+.memo {
+    position: relative;
+    display: block;
+
+    margin: 16px;
+}
+
+.memo_btn {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 14px;
+}
+
+.memo_btn>button {
+    position: relative;
+    display: block;
+    color: #fff;
+
+    padding: 16px;
+    border: 1px solid #fff;
+    background: transparent;
+
+    width: 200px;
+    height: 48px;
+    text-align: center;
+}
+
+.memo_text {
+    position: relative;
+    display: none;
+
+    border: 1px solid #fff;
+    border-radius: 8px;
+
+    margin-bottom: 24px;
+}
+
+.memo_box {
+    position: relative;
+    display: block;
+    padding: 16px;
+}
+
+.memo_box_annotaion {
+    padding-top: 0;
+}
+
+.content_memo_btn {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 12px;
+    display: none;
+
+    /* 230209 */
+}
+
+.content_memo_btn>li {
+    position: relative;
+    display: block;
+    margin-right: 8px;
+}
+
+.content_memo_btn>li>button {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.main_memo {
+    position: relative;
+    display: block;
+
+    color: #fff;
+    line-height: 1.5;
+    border: 1px solid #fff;
+}
+
+.sub_memo {
+    position: relative;
+    display: block;
+    color: #fff;
+    line-height: 1.5;
+    border: 1px solid #fff;
+
+    display: none;
+    /* 230909 */
+}
+
+.memo_input {
+    position: relative;
+    display: block;
+
+    margin-bottom: 14px;
+}
+
+.memo_input>textarea {
+    position: relative;
+    display: block;
+
+    background: rgba(5, 7, 26, 1);
+
+    width: 100%;
+    height: 200px;
+    resize: none;
+
+    padding: 12px;
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+
+    border-radius: 8px;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+/* 230209 */
+
+.memo_wrap {
+    display: flex;
+    justify-content: flex-start;
+    align-items: unset;
+    flex-wrap: wrap;
+}
+
+.memo_content {
+    width: 24%;
+    margin-right: 1.33%;
+    margin-bottom: 16px;
+    padding: 16px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.memo_content:nth-child(4n) {
+    margin-right: 0;
+}
+
+.memo_content>p {
+    height: 81px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* 라인 수 */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* End :: memo */
+
+/* End :: Annotation */
+
+.Annotation {
+    position: relative;
+    display: block;
+}
+
+.Annotation>textarea {
+    position: relative;
+    display: block;
+
+    background: #fff;
+
+    width: 100%;
+    height: 100px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 12px;
+
+    border-radius: 8px;
+    resize: none;
+}
+
+.memo_annotation {
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin-bottom: 16px;
+}
+
+.memo_annotation>button {
+    padding: 12px;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+.memo_box_annotaion {
+    position: relative;
+    display: block;
+}
+
+.annotation_content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    backdrop-filter: blur(10px);
+}
+
+.annotation_content_pos {
+    position: absolute;
+    top: 16%;
+    left: 50%;
+    display: block;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    /* height: 80%; */
+    background: rgba(5, 7, 26, 1);
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.annotation_content_pos>title {
+    position: relative;
+    display: block;
+}
+
+.annotation_content>button {
+    position: relative;
+    display: block;
+}
+
+/* Write */
+
+.content_write {
+    position: relative;
+    display: block;
+
+    padding-bottom: 40px;
+}
+
+.content_write button {
+    position: absolute;
+    right: 0;
+    display: block;
+}
+
+.WriteDiv {
+    position: relative;
+    display: block;
+}
+
+.write {
+    position: relative;
+    display: block;
+}
+
+.write_list {
+    position: relative;
+    display: block;
+
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 16px;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.write_list>span {
+    position: relative;
+    display: block;
+
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.write_list>strong {
+    position: relative;
+    display: block;
+
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.write_list>p {
+    position: relative;
+    display: block;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    height: 74px;
+
+    text-align: justify;
+}
+
+.write_page {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    backdrop-filter: blur(10px);
+}
+
+.write_page_pos {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: rgba(5, 7, 26, 1);
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.write_page input {
+    position: relative;
+    display: block;
+    background: transparent;
+
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+
+    padding: 8px 0;
+    margin-bottom: 14px;
+}
+
+.write_title {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+.write_subtitle {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+.write_textarea {
+    position: relative;
+    display: block;
+    background: transparent;
+
+    width: 100%;
+    height: 400px;
+    border: 0;
+
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #fff;
+    resize: none;
+}
+
+/* main memo textarea */
+
+.Main_memo_textarea {
+    position: relative;
+    display: block;
+}
+
+.Main_memo_textarea>textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #333;
+    resize: none;
+    margin-bottom: 16px;
+}
+
+.main_textarea_correct {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.main_textarea_correct>li {
+    position: relative;
+    display: block;
+    margin-left: 10px;
+}
+
+.main_textarea_correct>li>button {
+    position: relative;
+    display: block;
+
+    padding: 8px;
+    border: 1px solid #fff;
+    background-color: transparent;
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* textarea scroll custom */
+
+/* end :: Memo */
+
+.view_page {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    height: 100%;
+
+    transition: opacity 1s ease-in-out;
+    opacity: 0;
+    backdrop-filter: blur(10px);
+}
+
+.view_content {
+    position: absolute;
+    top: 16%;
+    left: 50%;
+    display: block;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    /* height: 80%; */
+    background: rgba(5, 7, 26, 1);
+    border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.view_content>title {
+    position: relative;
+    display: block;
+
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #fff;
+
+    padding-bottom: 14px;
+}
+
+.view_content>span {
+    position: relative;
+    display: block;
+
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+
+    padding-bottom: 14px;
+}
+
+.view_content>p {
+    position: relative;
+    display: block;
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 동적 작업을 위한.... 23.02.10 */
+
+.showThis {
+    opacity: 1 !important;
+    transition: opacity 0.3s ease-in-out !important;
+    z-index: 999;
+}
+
+.form_pos {
+    position: absolute;
+    display: block;
+
+    top: 5px;
+    right: 26px;
+}
+
+.btn_close {
+    position: absolute;
+    display: block;
+
+    width: 22px;
+    height: 22px;
+    background: transparent;
+}
+
+.btn_close>div:nth-child(1) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    display: block;
+
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background: #fff;
+}
+
+.btn_close>div:nth-child(2) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-135deg);
+    display: block;
+
+    width: 3px;
+    height: 100%;
+    border-radius: 3px;
+    background: #fff;
+}
+
+.btn_common {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: transparent;
+    border: 1px solid #fff;
+
+    width: 180px;
+
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #fff;
+    
+}

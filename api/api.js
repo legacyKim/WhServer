@@ -16,8 +16,6 @@ app.get('/api/WriteList', (req, res) => {
 
 app.post('/api/WriteList', (req, res) => {
 
-    console.log(req.body.writeDate);
-
     try {
         const { title, subTitle, content } = req.body;
 
@@ -47,8 +45,6 @@ app.get('/api/Memo', (req, res) => {
 
     MemoListSchema.find({}, (err, docs) => {
 
-        console.log(docs.memoDate)
-        console.log(docs)
         if (err) {
             console.error(err);
         } else {

@@ -13,10 +13,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname, 'Whelper/build')));
+app.use(express.static(path.join(__dirname, 'project/build')));
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'Whelper/build/index.html'));
+  res.sendFile(path.join(__dirname, 'project/build/index.html'));
 });
 
 const apiRouter = require('./api/api');
@@ -35,5 +35,5 @@ app.listen(3000, () => {
 });
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'Whelper/build/index.html'));
+  res.sendFile(path.join(__dirname, 'project/build/index.html'));
 });
