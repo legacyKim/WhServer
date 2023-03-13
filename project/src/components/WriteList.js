@@ -25,7 +25,7 @@ function WriteList(props) {
             const response = await axios.post('http://localhost:3000/api/WriteList', {
                 title: newTitle.current.value,
                 subTitle: newSubTitle.current.value,
-                content: newContent.current.value
+                content: newContent.current.value.replaceAll("<br>", "\r\n")
             });
             setWrite([response.data, ...props.WriteListData]);
             newTitle.current.value = '';
@@ -66,7 +66,7 @@ function WriteList(props) {
                                     <WriteList props={props.WriteListData[i]} i={i} />
 
                                 </div>
-                                <form className='form_pos'>
+                                <form className='form_pos write_pos'>
                                     <button className='btn_close' onClick={() => writeDelete(a)}>
                                         <div></div>
                                         <div></div>
@@ -88,7 +88,7 @@ function WriteList(props) {
     function WriteList(props) {
 
         return (
-
+ 
             <div className='write_list'>
                 <div className='write_list_btn'>
                     <button></button>
@@ -96,7 +96,7 @@ function WriteList(props) {
                 </div>
                 <span>{props.props.title}</span>
                 <strong>{props.props.subTitle}</strong>
-                <p>{props.props.content}</p>
+                <p style={{ whiteSpace: 'pre-wrap' }}>{props.props.content}</p>
             </div>
 
         )
@@ -121,9 +121,9 @@ function WriteList(props) {
                 <div className='view_content'>
                     <title>{props.id.title}</title>
                     <span>{props.id.subTitle}</span>
-                    <p>{props.id.content.replaceAll("<br>", "\r\n")}</p>
+                    <p style={{ whiteSpace: 'pre-wrap' }}>{props.id.content}</p>
                 </div>
-                <form className='form_pos'>
+                <form className='form_pos view_pos'>
                     <button className='btn_close color_w' onClick={() => setShowComponent()}>
                         <div></div>
                         <div></div>
@@ -153,7 +153,7 @@ function WriteList(props) {
                     <form>
                         <input type="text" placeholder="TITLE" className="write_title" ref={newTitle}></input>
                         <input type="text" placeholder="SUBTITLE" className="write_subtitle" ref={newSubTitle}></input>
-                        <textarea type="text" placeholder="CONTENT" className="write_textarea" ref={newContent.replaceAll("<br>", "\r\n")}></textarea>
+                        <textarea type="text" placeholder="CONTENT" className="write_textarea" ref={newContent}></textarea>
                         <button className='btn_common' onClick={writeSubmit}>저장</button>
                     </form>
                 </div>

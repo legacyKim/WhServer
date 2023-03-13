@@ -25,7 +25,7 @@ function App() {
 
             <div className='logo'>
               <NavLink to="/" onClick={()=>{navigate('/')}}>
-                React Project
+                Home
               </NavLink>
             </div>
 
@@ -40,16 +40,19 @@ function App() {
                   MEMO
                 </NavLink>
               </div>
-              <div className='search_bar'>
+
+              {/* <div className='search_bar'>
                 <NavLink to="/components/Search" onClick={()=>{navigate('/components/Search')}}>
                   SEARCH
                 </NavLink>
-              </div>
-              <div className='index_btn'>
+              </div> */}
+
+              {/* <div className='index_btn'>
                 <NavLink to="" onClick={()=>{navigate('/components/Side')}}>
                   SIDE
                 </NavLink>
-              </div>
+              </div> */}
+
             </div>
           </div>
         </div>

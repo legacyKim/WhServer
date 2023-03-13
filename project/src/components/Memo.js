@@ -41,9 +41,6 @@ function Memo(props) {
             <div className='content_area'>
 
                 <form onSubmit={memoSubmit}>
-                    <div className='memo_btn'>
-                        <button href='#'>메모 추가하는 버튼</button>
-                    </div>
 
                     <div className='memo_input'>
                         <textarea onInput={(e) => {
@@ -51,6 +48,10 @@ function Memo(props) {
                         }}>
 
                         </textarea>
+                    </div>
+
+                    <div className='memo_btn'>
+                        <button href='#'>메모 추가하는 버튼</button>
                     </div>
                 </form>
 
@@ -61,7 +62,7 @@ function Memo(props) {
                             return (
                                 <div className='memo_content' key={i}>
                                     <p className='font_text' onClick={(e) => { setShowComponent(a, a.id) }} style={{ whiteSpace: 'pre-wrap' }}>{props.MainMemoData[i].memo}</p>
-                                    <form className='form_pos'>
+                                    <form className='form_pos memo_pos'>
                                         <button className='btn_close' onClick={() => memoDelete(a)}>
                                             <div></div>
                                             <div></div>
@@ -97,10 +98,13 @@ function Memo(props) {
             <div className={`annotation_content ${props.id ? fade : ""}`}>
 
                 <div className='annotation_content_pos'>
-                    <title className='font_text color_w'>{props.id.memo.replaceAll("<br>", "\r\n")}</title>
+                    <title className='font_text color_w' style={{ whiteSpace: 'pre-wrap' }}>{props.id.memo}</title>
                 </div>
 
-                <button className='color_w' onClick={() => setShowComponent()}>임시 닫기 버튼</button>
+                <button className='color_w btn_close memo_btn_pos' onClick={() => setShowComponent()}>
+                    <div></div>
+                    <div></div>
+                </button>
 
             </div>
 

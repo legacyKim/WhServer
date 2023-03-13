@@ -12,9 +12,10 @@ import './css/header.css';
 import List from './components/List'
 import Memo from './components/Memo'
 import WriteList from './components/WriteList'
-import Side from './components/Side'
 import Search from './components/Search'
-import View from './components/View'
+
+// import Side from './components/Side'
+// import View from './components/View'
 
 function Menu() {
 
@@ -52,8 +53,8 @@ function Menu() {
 
                         <Route exact path="/" />
 
-                        <Route path="/components/Side" element={<Side />} />
-                        <Route path="/components/Search" element={<Search />} />
+                        {/* <Route path="/components/Side" element={<Side />} /> */}
+                        {/* <Route path="/components/Search" element={<Search />} /> */}
 
                         <Route path="/components/List" element={<List />} />
                         <Route path="/components/Memo" element={<Memo MainMemoData={MainMemoData} />} />
